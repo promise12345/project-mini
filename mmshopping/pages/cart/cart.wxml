@@ -1,0 +1,25 @@
+<view class="goods_cart">
+  <view class="user_address">
+    <button type="primary" plain>添加收货地址</button>
+  </view>
+  <view class="goods_list">
+    <view
+    class="list_item"
+    wx:for="{{list}}"
+    wx:key="id">
+      <checkbox class="" value="" color="#eb4450"></checkbox>
+      <image class="" src="{{item.url}}" mode="widthFix" />
+      <view class="list_intro">
+        <view class="good_name">{{item.name}}</view>
+        <view class="good_edit">
+          <view class="good_price">￥ {{item.price}}</view>
+          <view class="num_edit" bind:tap="changeNum" data-index="{{index}}">
+            <view class="plus" data-action="plus">-</view>
+            <input class="input" data-action="input" type="text" value="{{item.num || 1}}" />
+            <view class="add" data-action="add">+</view>
+          </view> 
+        </view>
+      </view>
+    </view> 
+  </view>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/index/index.wxml-->
+<view class="pg_index">
+  <!-- 搜索框 -->
+  <search-input></search-input>
+  <!-- 轮播图 -->
+  <view class="index_swiper">
+    <swiper class="" indicator-dots autoplay circular>
+      <swiper-item wx:for="{{swiperList}}" wx:key="good_id">
+        <navigator class="" target="" url="">
+          <image class="" src="{{item.good_url}}" mode="widthFix" />
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 导航 -->
+  <view class="index_nav">
+    <navigator class="" target="" url="" wx:for="{{navList}}" wx:key="id">
+      <image class="" src="{{item.url}}" mode="widthFix" />
+      <text class="" selectable="false">{{item.name}}</text>
+    </navigator>
+  </view>
+  <!-- 楼层 -->
+  <view class="index_floor">
+    <view class="floor_group" wx:for="{{proList}}" wx:key="id">
+      <view class="floor_title">
+        <image class="" src="{{item.floor_title.url}}" mode="widthFix" />
+      </view>
+      <view class="floor_first">
+        <navigator class="" target="" url="" wx:for="{{item.pro_list}}" wx:for-item="product" wx:for-index="_index" wx:key="id">
+          <image class="" src="{{product.url}}" mode="{{_index==0?'widthFix':'scaleToFill'}}" />
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+  
+
+
+  

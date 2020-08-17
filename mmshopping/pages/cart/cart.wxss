@@ -1,0 +1,42 @@
+/* pages/cart/cart.wxss */
+.goods_cart .goods_list .list_item {
+  display: flex;
+  align-items: center;
+}
+.goods_cart .goods_list .list_item image {
+  flex: 1;
+}
+.goods_cart .goods_list .list_item .list_intro {
+  flex: 2;
+  height: 100%;
+}
+.goods_cart .goods_list .list_item .list_intro .good_name {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goods_cart .goods_list .list_item .list_intro .good_edit {
+  display: flex;
+  justify-content: space-between;
+}
+.goods_cart .goods_list .list_item .list_intro .good_edit .good_price {
+  flex: 1;
+  color: var(--themeColor);
+}
+.goods_cart .goods_list .list_item .list_intro .good_edit .num_edit {
+  flex: 1;
+  display: flex;
+  border: 2rpx solid #eee;
+  text-align: center;
+}
+.goods_cart .goods_list .list_item .list_intro .good_edit .num_edit .input {
+  border-left: 2rpx solid #eee;
+  border-right: 2rpx solid #eee;
+}
+.goods_cart .goods_list .list_item .list_intro .good_edit .num_edit .plus,
+.goods_cart .goods_list .list_item .list_intro .good_edit .num_edit .add {
+  padding: 0 15rpx;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,42 @@
+<view class="goods_detail">
+  <view class="goods_show">
+    <swiper class="" indicator-dots autoplay circular>
+      <swiper-item bind:tap="handlePreview" data-index="{{index}}" class="" wx:for="{{goodData.urls}}" wx:key="id">
+        <image class="" src="{{item}}" mode="widthFix" />
+      </swiper-item>
+    </swiper>
+    <text class="goods_price">￥ {{goodData.price}}</text>
+    <view class="goods_name">
+      <text class="names">{{goodData.name}}</text>
+      <view class="shoucang" bind:tap="handleSave">
+        <image class="" src="{{saveSrc}}" mode="widthFix" />
+        <view class="">{{saveText}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="goods_intro">
+    <view class="pic_detail">图文详情</view>
+    <view>
+      <image class="" src="/assets/pic/telev.jpg" mode="widthFix" />
+      <image class="" src="/assets/pic/bao.jpg" mode="widthFix" />
+    </view>
+  </view>
+  <view class="goods_tool">
+    <view class="tool_item contant">
+      <image class="" src="/assets/imgs/lianxikefu.png" mode="widthFix" />
+      <view>客服</view>
+      <button open-type="contact"></button>
+    </view>
+    <view class="tool_item share">
+      <image class="" src="/assets/imgs/lianxikefu.png" mode="widthFix" />
+      <view>分享</view>
+      <button open-type="share"></button>
+    </view>
+    <navigator class="tool_item" url="/pages/cart/cart" open-type="switchTab">
+      <image class="" src="/assets/imgs/gouwuche.png" mode="widthFix" />
+      <view>购物车</view>
+    </navigator>
+    <view class="tool_item tocart" bind:tap="addToCart">加入购物车</view>
+    <view class="tool_item tobuy">立即购买</view>
+  </view>
+</view>

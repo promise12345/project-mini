@@ -1,0 +1,7 @@
+<!--components/SearchInput.wxml-->
+<view class="search_input">
+  <!-- <input type="text" placeholder="{{placeholder}}" /> -->
+  <navigator url="/pages/search/search">
+    搜索
+  </navigator>
+</view>
