@@ -2,12 +2,15 @@
   <view class="user_address">
     <button type="primary" plain>添加收货地址</button>
   </view>
+
   <view class="goods_list">
     <view
     class="list_item"
     wx:for="{{list}}"
     wx:key="id">
-      <checkbox class="" value="" color="#eb4450"></checkbox>
+    <checkbox-group bindchange="handleItemChecked" data-index="{{index}}">
+      <checkbox class="" value="{{item.id}}" checked="{{item.checked}}" color="#eb4450"></checkbox>
+    </checkbox-group>
       <image class="" src="{{item.url}}" mode="widthFix" />
       <view class="list_intro">
         <view class="good_name">{{item.name}}</view>
@@ -15,11 +18,21 @@
           <view class="good_price">￥ {{item.price}}</view>
           <view class="num_edit" bind:tap="changeNum" data-index="{{index}}">
             <view class="plus" data-action="plus">-</view>
-            <input class="input" data-action="input" type="text" value="{{item.num || 1}}" />
+            <input class="input" data-action="input" type="text" value="{{item.num}}" />
             <view class="add" data-action="add">+</view>
-          </view> 
+          </view>
         </view>
       </view>
     </view> 
+  </view>
+
+  <view class="sum_wrap">
+    <checkbox-group class="sum_item" bindchange="handleAllChecked">
+      <checkbox value="all" checked="{{allChecked}}" color="#eb4450">全选</checkbox>
+    </checkbox-group>
+    <view class="sum_item sum_calc">
+      <view class="total_price">合计：{{totalPrice}}</view>
+      <view class="buy_btn">结算({{goodNum}})</view>
+    </view>
   </view>
 </view>

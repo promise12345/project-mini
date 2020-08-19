@@ -10,24 +10,27 @@ Page({
         id: 100,
         name: "急急急就尴尬看看脚后跟付费更换急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓u与国刚刚好立刻就会谓",
         url: "/assets/pic/telev.jpg",
-        price: 998,
+        price: 10,
         num: 1
       },
       {
         id: 101,
         name: "急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓",
         url: "/assets/pic/telev.jpg",
-        price: 998,
+        price: 11,
         num: 1
       },
       {
         id: 102,
         name: "急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓",
         url: "/assets/pic/telev.jpg",
-        price: 2330,
+        price: 20,
         num: 1
       }
-    ]
+    ],
+    totalPrice: 0,
+    goodNum: 0,
+    allChecked: false
   },
 
   /**
@@ -46,19 +49,71 @@ Page({
   },
   handlePlus(index){
     let list = this.data.list
+    let totalPrice = 0
     list[index].num>1 ? list[index].num-- : list[index].num=1
+    list.map(v => {
+      if(v.checked){
+        totalPrice += v.num*v.price
+      }
+    })
     this.setData({
-      list
+      list,
+      totalPrice
     })
   },
   handleAdd(index){
     let list = this.data.list
+    let totalPrice = 0
     list[index].num++
+    list.map(v => {
+      if(v.checked){
+        totalPrice += v.num*v.price
+      }
+    })
     this.setData({
-      list
+      list,
+      totalPrice
     })
   },
   handleInput(index){},
+  handleItemChecked(e){
+    console.log(e)
+    let {value} = e.detail
+    let {index} = e.target.dataset
+    let list = this.data.list
+    // 价格
+    let totalPrice = 0
+    value.length ? list[index].checked=true : list[index].checked=false
+    list.map(v => {
+      if(v.checked){
+        totalPrice += v.num*v.price
+      }
+    })
+    // 是否全选
+    let allChecked = list.every(v => v.checked)
+    this.setData({
+      totalPrice,
+      allChecked
+    })
+  },
+  handleAllChecked(e){
+    let list = this.data.list
+    let {value} = e.detail
+    let totalPrice = 0
+    list.map(v => {
+      value.length?v.checked=true:v.checked=false
+      if(v.checked){
+        totalPrice += v.num*v.price
+      }
+    })
+    this.setData({
+      list,
+      totalPrice
+    })
+  },
+  getTotal(e){
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

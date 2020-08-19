@@ -1,4 +1,4 @@
-/* pages/cart/cart.wxss */
+
 .goods_cart{
 	.goods_list{
 		.list_item{
@@ -11,9 +11,6 @@
 			// 右
 			.list_intro{
 				flex: 2;
-				// display: flex;
-				// flex-direction: column;
-				// justify-content: space-between;
 				height: 100%;
 				.good_name{
 					display: -webkit-box;
@@ -36,7 +33,7 @@
 						}
 						// .input{border: 2rpx solid #eee;min-width: 100rpx;}
 						.plus,.add{
-							padding: 0 15rpx;
+							padding: 0 20rpx;
 							display: flex;
 							align-items: center;
 						}
@@ -46,4 +43,42 @@
 			}
 		}
 	}
+
+		
+	.sum_wrap{
+		position: fixed;
+		bottom: 0;
+		border-top: 2rpx solid #eee;
+		width: 100%;
+		height: 90rpx;
+		display: flex;
+		justify-content: space-between;
+
+		.sum_item{flex: 1; display: flex; align-items: center;}
+		.sum_calc{
+			flex: 2;
+			display: flex;
+			align-items: center;
+			text-align: center;
+			&>view{flex: 1};
+			.total_price{
+				border-left: 2rpx solid #eee;
+				border-right: 2rpx solid #eee;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.buy_btn{
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #fff;
+				background: var(--themeColor);
+			}
+		}
+	}
+		
+	
 }
