@@ -30,7 +30,10 @@ Page({
     ],
     totalPrice: 0,
     goodNum: 0,
-    allChecked: false
+    allChecked: false,
+    boxVisible: false,
+    currentIndex: null,
+    currentNum: 0
   },
 
   /**
@@ -75,9 +78,38 @@ Page({
       totalPrice
     })
   },
-  handleInput(index){},
+  handleInput(index){
+    this.setData({
+      boxVisible: true,
+      currentIndex: index,
+      currentNum: this.data.list[index].num
+    })
+  },
+  emitOk(prop){
+    // console.log(prop);
+    let { index, num} = prop.detail
+    let list = this.data.list
+    let totalPrice = 0
+
+    list[index].num = num
+    list.map(v => {
+      if(v.checked){
+        totalPrice += v.num*v.price
+      }
+    })
+    this.setData({
+      boxVisible: false,
+      list,
+      totalPrice
+    })
+  },
+  onCancel() {
+    this.setData({
+      boxVisible: false
+    })
+  },
   handleItemChecked(e){
-    console.log(e)
+    // console.log(e)
     let {value} = e.detail
     let {index} = e.target.dataset
     let list = this.data.list

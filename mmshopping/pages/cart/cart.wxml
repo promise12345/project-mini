@@ -18,7 +18,7 @@
           <view class="good_price">￥ {{item.price}}</view>
           <view class="num_edit" bind:tap="changeNum" data-index="{{index}}">
             <view class="plus" data-action="plus">-</view>
-            <input class="input" data-action="input" type="text" value="{{item.num}}" />
+            <input class="input" disabled data-action="input" type="text" value="{{item.num}}" />
             <view class="add" data-action="add">+</view>
           </view>
         </view>
@@ -35,4 +35,10 @@
       <view class="buy_btn">结算({{goodNum}})</view>
     </view>
   </view>
+  <input-box
+  wx:if="{{boxVisible}}"
+  default-num="{{currentNum}}"
+  current-index="{{currentIndex}}"
+  bind:emitOk="emitOk"
+  bind:onCancel="onCancel" />
 </view>
