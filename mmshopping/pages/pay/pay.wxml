@@ -1,2 +1,30 @@
-<!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<view class="pay_page">
+  <view class="receive_addr">
+    <image class="" src="../../assets/pic/location.jpg" mode="widthFix" />
+    <view>
+      <view> 张三 138xxxx6582</view>
+      <view> 广东省深圳市xxx街道xxx栋</view>
+    </view>
+  </view>
+  <view class="good_list">
+    <view class="list_wrap" wx:for="{{list}}" wx:key="id">
+      <view class="shop_name">{{item.shopName}}</view>
+      <view class="good_intr">
+        <image class="" src="{{item.url}}" mode="widthFix" />
+        <view>{{item.name + "-" + item.intro}} </view>
+        <view class="good_sum">
+          <view>￥{{item.price * item.num}}</view>
+          <view>{{ "x" + item.num}}</view>
+        </view>
+      </view>
+      <view>
+        备注：我是备注
+      </view>
+    </view>
+  </view>
+  <view class="pay_foot">
+    <view>共{{list.length}}件，合计<view style="color: #eb4450; display: inline; font-size: 32rpx">￥{{totalPrice}}</view></view>
+    <view class="submit_btn">提交订单</view>
+  </view>
+</view>
+  

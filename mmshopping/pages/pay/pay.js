@@ -5,7 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list: [
+      {
+        id: 100,
+        shopName: 'xxx化妆品旗舰店',
+        name: "电视",
+        price: 100,
+        intro: "50英寸 1980x900 内存：4G，内核：8核，会有胡",
+        url: "/assets/pic/telev.jpg",
+        num: 1
+      },
+      {
+        id: 101,
+        name: "电饭煲",
+        shopName: 'xxx海外旗舰店',
+        price: 100,
+        intro: "50英寸 1980x900 内存：4G，内核：8核，哪家酒",
+        url: "/assets/pic/bao.jpg",
+        num: 2
+      },
+    ],
+    totalPrice: 0
   },
 
   /**
@@ -26,7 +46,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let totalPrice = 0
+    this.data.list.map(v => {
+      totalPrice += v.price*v.num
+    })
+    this.setData({
+      totalPrice
+    })
   },
 
   /**

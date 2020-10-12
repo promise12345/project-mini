@@ -2,5 +2,5 @@
   "usingComponents": {
     "input-box": "./components/inputBox/inputBox"
   },
-  "navigationBarTitleText": "喵喵购物车"
+  "navigationBarTitleText": "购物车"
 }

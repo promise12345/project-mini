@@ -1,1 +1,36 @@
-/* pages/pay/pay.wxss */
+.pay_page .receive_addr {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.pay_page .receive_addr image {
+  width: 20%;
+}
+.pay_page .good_list .list_wrap {
+  border: 2rpx solid #eee;
+  border-radius: 8rpx;
+  margin-bottom: 30rpx;
+}
+.pay_page .good_list .list_wrap .good_intr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pay_page .good_list .list_wrap .good_intr image {
+  width: 60%;
+}
+.pay_page .pay_foot {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2rpx solid #eee;
+}
+.pay_page .pay_foot .submit_btn {
+  color: #fff;
+  background: var(--themeColor);
+  padding: 14rpx;
+}

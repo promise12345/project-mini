@@ -1,0 +1,12 @@
+
+<view class="input-box" catch:tap="handleCancel" wx:if="{{modalVisible}}">
+	<view class="box-wrap" catch:tap="() => void">
+		<view class="box-title">{{modalTitle}}</view>
+		<view class="box-content">
+			<slot />
+		</view>
+		<view class="box-footer">
+			<button type="primary" size="mini" catch:tap="handleOk">确定</button>
+		</view>
+	</view>
+</view>

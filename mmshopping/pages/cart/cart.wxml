@@ -1,10 +1,21 @@
 <view class="goods_cart">
   <view class="user_address">
+    <view class="cart_subname">收货地址</view>
     <button type="primary" plain>添加收货地址</button>
   </view>
 
   <view class="goods_list">
+    <view style="display: flex; justify-content: space-between">
+      <view class="cart_subname">购物车</view>
+      <view bind:tap="handleManage">管理</view>
+    </view>
+    <!-- 购物车为空时 -->
+    <view wx:if="{{!list.length}}">
+      <image class="" src="/assets/pic/empty.gif" mode="widthFix" />
+    </view>
+    <!-- 购物车非空时 -->
     <view
+    wx:if="{{list.length}}"
     class="list_item"
     wx:for="{{list}}"
     wx:key="id">
@@ -26,13 +37,25 @@
     </view> 
   </view>
 
-  <view class="sum_wrap">
+  <view class="sum_wrap" wx:if="{{list.length}}">
     <checkbox-group class="sum_item" bindchange="handleAllChecked">
       <checkbox value="all" checked="{{allChecked}}" color="#eb4450">全选</checkbox>
     </checkbox-group>
     <view class="sum_item sum_calc">
-      <view class="total_price">合计：{{totalPrice}}</view>
-      <view class="buy_btn">结算({{goodNum}})</view>
+      <!-- 点击管理-删除时 -->
+      <view class="btn_type" wx:if="{{showDel}}">
+        <view class="del_btn" bind:tap="handleDel">删除</view>
+        <view class="del_btn" bind:tap="handleEmpty">清空购物车</view>
+      </view>
+      
+      <!-- 结算时 -->
+      <view class="btn_type" wx:if="{{!showDel}}">
+        <view class="total_price">合计：{{totalPrice}}</view>
+        <navigator url="/pages/pay/pay">
+          <view class="buy_btn">结算({{goodNum}})</view>
+        </navigator>
+      </view>
+      <!-- <view class="buy_btn" >结算({{goodNum}})</view> -->
     </view>
   </view>
   <input-box
@@ -41,4 +64,11 @@
   current-index="{{currentIndex}}"
   bind:emitOk="emitOk"
   bind:onCancel="onCancel" />
+
+  <!-- <input-box
+  box-visible="{{boxVisible}}"
+  default-num="{{currentNum}}"
+  current-index="{{currentIndex}}"
+  bind:emitOk="emitOk"
+  bind:onCancel="onCancel" /> -->
 </view>

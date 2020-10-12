@@ -6,34 +6,35 @@ Page({
    */
   data: {
     list:[
-      {
-        id: 100,
-        name: "急急急就尴尬看看脚后跟付费更换急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓u与国刚刚好立刻就会谓",
-        url: "/assets/pic/telev.jpg",
-        price: 10,
-        num: 1
-      },
-      {
-        id: 101,
-        name: "急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓",
-        url: "/assets/pic/telev.jpg",
-        price: 11,
-        num: 1
-      },
-      {
-        id: 102,
-        name: "急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓",
-        url: "/assets/pic/telev.jpg",
-        price: 20,
-        num: 1
-      }
+      // {
+      //   id: 100,
+      //   name: "急急急就尴尬看看脚后跟付费更换急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓u与国刚刚好立刻就会谓",
+      //   url: "/assets/pic/telev.jpg",
+      //   price: 10,
+      //   num: 1
+      // },
+      // {
+      //   id: 101,
+      //   name: "急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓",
+      //   url: "/assets/pic/telev.jpg",
+      //   price: 11,
+      //   num: 1
+      // },
+      // {
+      //   id: 102,
+      //   name: "急急急就尴尬看看脚后跟付费更换u与国刚刚好立刻就会谓",
+      //   url: "/assets/pic/telev.jpg",
+      //   price: 20,
+      //   num: 1
+      // }
     ],
     totalPrice: 0,
     goodNum: 0,
     allChecked: false,
     boxVisible: false,
     currentIndex: null,
-    currentNum: 0
+    currentNum: 0,
+    showDel: false
   },
 
   /**
@@ -115,49 +116,74 @@ Page({
     let list = this.data.list
     // 价格
     let totalPrice = 0
+    let goodNum = 0
     value.length ? list[index].checked=true : list[index].checked=false
     list.map(v => {
       if(v.checked){
         totalPrice += v.num*v.price
+        goodNum++
       }
     })
     // 是否全选
     let allChecked = list.every(v => v.checked)
     this.setData({
       totalPrice,
-      allChecked
+      allChecked,
+      goodNum
     })
   },
   handleAllChecked(e){
     let list = this.data.list
     let {value} = e.detail
     let totalPrice = 0
+    let goodNum = 0
     list.map(v => {
       value.length?v.checked=true:v.checked=false
       if(v.checked){
         totalPrice += v.num*v.price
+        goodNum++
       }
     })
     this.setData({
       list,
-      totalPrice
+      totalPrice,
+      goodNum
     })
   },
-  getTotal(e){
-    
+  handleManage() {
+    this.setData({showDel: !this.data.showDel})
+  },
+  handleDel() {
+    let list = this.data.list.filter(v => !v.checked)
+    this.setData({list})
+    wx.setStorageSync('cart', list)
+    // wx.removeStorageSync("cart")
+  },
+  handleEmpty() {
+    this.setData({list: []})
+    wx.removeStorageSync("cart")
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let cart = wx.getStorageSync('cart')
+    // console.log(cart, 'cartmmm')
+    cart.map(v => {
+      v.num=v.number
+      v.url=v.urls[0]
+    })
+    this.setData({
+      list: cart,
+      showDel: false
+    })
   },
 
   /**

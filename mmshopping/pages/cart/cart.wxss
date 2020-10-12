@@ -1,3 +1,11 @@
+.goods_cart .cart_subname {
+  color: var(--themeColor);
+  border-bottom: 2rpx solid #eee;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  padding: 10rpx 0;
+}
 .goods_cart .goods_list .list_item {
   display: flex;
   align-items: center;
@@ -59,10 +67,19 @@
   align-items: center;
   text-align: center;
 }
-.goods_cart .sum_wrap .sum_calc > view {
+.goods_cart .sum_wrap .sum_calc .btn_type {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.goods_cart .sum_wrap .sum_calc .btn_type .del_btn {
+  color: var(--themeColor);
   flex: 1;
 }
-.goods_cart .sum_wrap .sum_calc .total_price {
+.goods_cart .sum_wrap .sum_calc .btn_type .total_price {
+  flex: 1;
   border-left: 2rpx solid #eee;
   border-right: 2rpx solid #eee;
   height: 100%;
@@ -70,7 +87,11 @@
   align-items: center;
   justify-content: center;
 }
-.goods_cart .sum_wrap .sum_calc .buy_btn {
+.goods_cart .sum_wrap .sum_calc .btn_type navigator {
+  flex: 1;
+  height: 100%;
+}
+.goods_cart .sum_wrap .sum_calc .btn_type navigator .buy_btn {
   height: 100%;
   display: flex;
   align-items: center;

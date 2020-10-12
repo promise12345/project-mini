@@ -5,7 +5,8 @@ Component({
    */
   properties: {
     currentIndex: Number,
-    defaultNum: Number
+    defaultNum: Number,
+    boxVisible: Boolean
   },
 
   /**
@@ -34,11 +35,13 @@ Component({
       : null
     },
     handleOk(){
+      // console.log('ok')
       const index = this.data.currentIndex
       const num = this.data.newNum
       this.triggerEvent('emitOk', {index, num})
     },
     handleCancel() {
+      // console.log('cancel')
       this.triggerEvent('onCancel')
     }
   }
