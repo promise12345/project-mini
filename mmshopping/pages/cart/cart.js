@@ -34,7 +34,8 @@ Page({
     boxVisible: false,
     currentIndex: null,
     currentNum: 0,
-    showDel: false
+    showDel: false,
+    addressData: {}
   },
 
   /**
@@ -150,18 +151,37 @@ Page({
       goodNum
     })
   },
+  // 管理
   handleManage() {
     this.setData({showDel: !this.data.showDel})
   },
+  // 删除
   handleDel() {
     let list = this.data.list.filter(v => !v.checked)
     this.setData({list})
     wx.setStorageSync('cart', list)
     // wx.removeStorageSync("cart")
   },
+  // 清空
   handleEmpty() {
     this.setData({list: []})
     wx.removeStorageSync("cart")
+  },
+  // 添加地址
+  getAddress() {
+    // wx.getSetting({
+    //   success:(res) =>{
+    //     console.log(res)
+    //   }
+    // })
+    // wx.chooseAddress({
+    //   success:(res)=>{
+    //     console.log(res, '地址')
+    //     // this.setData({
+    //     //   addressData: res
+    //     // })
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -174,7 +194,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let cart = wx.getStorageSync('cart')
+    let cart = wx.getStorageSync('cart') || []
     // console.log(cart, 'cartmmm')
     cart.map(v => {
       v.num=v.number

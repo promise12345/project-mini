@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "comp-modal": "../../../components/compModal/compModal"
+    
   }
 }
+

@@ -74,9 +74,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "pages/pay/pay",
-					"pathName": "pages/pay/pay",
+					"pathName": "pages/search/search",
 					"query": "goods_id=100",
 					"scene": null
 				}

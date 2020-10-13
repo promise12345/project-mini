@@ -1,2 +1,6 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view>
+  <input class="" value="" placeholder="请输入您要搜索的商品" focus bindblur=""></input>
+  <button size="mini" type="primary">搜索</button>
+</view>
+  

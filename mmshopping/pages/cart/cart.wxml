@@ -1,7 +1,12 @@
 <view class="goods_cart">
   <view class="user_address">
     <view class="cart_subname">收货地址</view>
-    <button type="primary" plain>添加收货地址</button>
+    <button type="primary" plain bind:tap="getAddress">添加收货地址</button>
+    <view wx:if="{{addressData.userName}}">
+      <view>用户名：{{addressData.userName}}</view>
+      <view>电话：{{addressData.telNumber}}</view>
+      <view>地址：{{addressData.provinceName+addressData.cityName+addressData.countyName+addressData.detailInfo}}</view>
+    </view>
   </view>
 
   <view class="goods_list">

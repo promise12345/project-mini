@@ -1,5 +1,5 @@
 
-<view class="input-box" catch:tap="handleCancel" wx:if="{{modalVisible}}">
+<view class="modal-box" catch:tap="handleCancel" wx:if="{{modalVisible}}">
 	<view class="box-wrap" catch:tap="() => void">
 		<view class="box-title">{{modalTitle}}</view>
 		<view class="box-content">

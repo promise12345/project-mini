@@ -7,7 +7,32 @@ Page({
   data: {
 
   },
-
+  handleAuth(e){
+    // console.log(e)
+    const {encryptedData, iv, rawData, signature} = e.detail
+    let code = ''
+    wx.login({
+      timeout:10000,
+      success: (res) => {
+        // console.log(res)
+        code = res.code
+      },
+    });
+    wx.setStorageSync('token', 'Bearer kjhgfvb');
+      
+    wx.navigateBack({
+      delta: 1
+    });
+      
+    // wx.request({
+    //   url: 'https://api.mch.weixin.qq.com/v3/pay/transactions/jsapi',
+    //   method: 'POST',
+    //   data: {},
+    //   success:(res) => {
+    //     console.log(res, '支付成功')
+    //   }
+    // })  
+  },
   /**
    * 生命周期函数--监听页面加载
    */

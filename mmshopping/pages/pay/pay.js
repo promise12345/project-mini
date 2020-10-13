@@ -54,7 +54,30 @@ Page({
       totalPrice
     })
   },
-
+  /**
+   * @param {}
+   */
+  handlePay(){
+    const token = wx.getStorageSync('token');
+    if(!token){
+      wx.navigateTo({
+        url: '/pages/auth/auth',
+      });
+      return
+    }
+    console.log('已存在token')
+    wx.requestPayment({
+      timeStamp: Date.now(),
+      nonceStr: 'U6tYjNdYvm3ReKgi',
+      package: 'prepay_id=wx09182118356902a15c8b8d071931343000',
+      signType: 'MD5',
+      paySign: 'C514E29387794F84004C983AFFF4707F',
+      success: (result) => {
+        console.log(result)
+      },
+    });
+      
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
